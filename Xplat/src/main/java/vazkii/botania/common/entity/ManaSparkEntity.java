@@ -342,6 +342,7 @@ public class ManaSparkEntity extends SparkBaseEntity implements ManaSpark {
 
 							// Recalculate transfers, recessive and dominant will register the proper transfers
 							outgoingTransfers.clear();
+							inboundTransfers.clear();
 							notifyOthers(getNetwork());
 						} else {
 							dropAndKill();
@@ -370,6 +371,7 @@ public class ManaSparkEntity extends SparkBaseEntity implements ManaSpark {
 					if (!level().isClientSide) {
 						setNetwork(color);
 						stack.shrink(1);
+						updateTransfers();
 					}
 					return InteractionResult.sidedSuccess(level().isClientSide);
 				}
